@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+    int punteggio = 0;
+    int numero_domanda = 0;
+    int scelta;
+    int risposta;
+    int ultima_scelta;
+    
+    printf("Benvenuto, questo è il progetto creato per Epicode\nInserisci 1 per una nuova partita\n Inserisci 0 per uscire\n");
+    scanf("%d", &scelta);
+    while(scelta > 1){
+        printf("hai inserito un valore errato.. inserire il valore corretto\n inserire 1 per una nuova partita\n inserire 0 per uscire\n");
+        scanf("%d",&scelta);
+        
+    }
+    do{
+    if(scelta == 0){
+        exit;}
+    if(scelta == 1){
+        printf("**********INIZIO GIOCO**********\n"
+        "TI VERRANNO FATTE DELLE DOMANDE, RISPONDI CORRETTAMENTE ED INCREMENTA I TUOI PUNTI :D\n INSERIRE IL NUMERO DELLA RISPOSTA CHE SI VUOLE DARE\n");
+        printf("\nDomanda 1 : A COSA SERVE IL COMANDO CHMOD?\n 1)CANCELLARE UN FILE\n 2)CREARE UNA NUOVA DIRECTORY\n 3)MODIFICARE I PERMESSI\n");
+        scanf("%d", &risposta);
+        if(risposta !=3){
+            printf("hai sbagliato\n");}
+        else{
+            printf("CORRETTO!!!\n");
+            punteggio = punteggio + 1;}
+        
+        printf("\nDomanda 2: PER COSA SI UTILIZZA UNA MACCHINA VIRTUALE? \n 1)EMULAZIONE DI UNA PIATTAFORMA\n 2)ATTACCO INFORMATICO\n 3)CONNESSIONE AD INTERNET");
+        scanf("%d", &risposta);
+        if (risposta != 1){
+            printf("hai sbagliato\n");
+        }
+        else{
+            printf("CORRETTO !!!");
+            punteggio = punteggio +1;
+        }
+        printf("\nDomanda 3: quanto fa 2+2?\n1)16 \n2)4\n3)609");
+        scanf("%d", &risposta);
+        if(risposta !=2){
+            printf("O.O Hai sbagliato, ed è grave");
+            
+        }
+        else{
+            printf("CORRETTO!!!");
+            punteggio = punteggio +1;
+        }
+        }
+        
+        printf("Questo minigioco è terminato ... hai totalizzato %d punti", punteggio);
+        printf("\nDesideri rigiocare? Premere 1 per rigiocare , Premere 0 per uscire");
+        scanf("%d",&ultima_scelta);
+    
+    }
+    while(ultima_scelta==1);
+
+}       

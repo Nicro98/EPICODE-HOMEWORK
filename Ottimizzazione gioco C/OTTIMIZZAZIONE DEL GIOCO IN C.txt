@@ -1,0 +1,102 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+//PROTOTIPI DI FUNZIONE
+void game_display();
+int game_start(int, int, int, int);
+
+int main(){
+    int punteggio = 0;
+    int scelta;
+    int risposta;
+    int rigiocare = 0;
+    char nome_giocatore[20] = {'\0'};
+    //RICHIESTA NOME GIOCATORE
+    do{
+    printf("INSERIRE IL NOME DEL GIOCATORE ... \n");
+    scanf("%s", nome_giocatore);
+    if(strlen(nome_giocatore) > 20){
+        printf("SI PREGA DI INSERIRE MENO CARATTERI\n");
+    }
+    }while(strlen(nome_giocatore) > 20);
+    printf("BENVENUTO %s PRONTO A GIOCARE?\n ", nome_giocatore);
+    //ESECUZIONE DELLE FUNZIONI
+    game_display();
+    game_start(punteggio, risposta, scelta, rigiocare);
+        
+        
+ return 0;   
+} 
+
+
+
+//VISUALIZZAZIONE INIZIO GIOCO - RICHIESTA INPUT GIOCARE O USCIRE
+void game_display()
+{   
+    printf("************************************** QUIZ GAME ******************************************\n");
+    printf("Questo è il progetto creato per Epicode\nInserisci 1 per una nuova partita\n Inserisci 0 per uscire\n");
+    printf("************************************** //////// ******************************************\n");
+}
+
+
+//INIZIO DEL GIOCO
+
+int game_start(int punteggio1, int risposta1, int scelta1, int Rigioca1){
+    // ************** INIZIO GIOCO O ESCI  **************** 
+    scanf("%d", &scelta1);
+    while(scelta1 > 1){
+        printf("VALORE ERRATO, INSERIRE UN VALORE CORRETTO");
+        scanf("%d", &scelta1);}
+    // ************ FINE BLOCCO INIZIO GIOCO O ESCI *********    
+    
+    // *********** INIZIO DEL GIOCO ********** //    
+do{
+    if(scelta1 == 0){  //COMANDO ESCI DAL GIOCO
+        exit;}
+    if(scelta1 == 1){ //COMANDO INIZIO DEL GIOCO
+        printf("**********INIZIO GIOCO**********\n"
+        "TI VERRANNO FATTE DELLE DOMANDE, RISPONDI CORRETTAMENTE ED INCREMENTA I TUOI PUNTI :D\n INSERIRE IL NUMERO DELLA RISPOSTA CHE SI VUOLE DARE\n");
+        //BLOCCO DOMANDA 1
+        printf("\nDomanda 1 : A COSA SERVE IL COMANDO CHMOD?\n 1)CANCELLARE UN FILE\n 2)CREARE UNA NUOVA DIRECTORY\n 3)MODIFICARE I PERMESSI\n");
+        scanf("\n%d", &risposta1);
+        if(risposta1 !=3){
+            printf("hai sbagliato\n");}
+        if(risposta1 > 3){
+            printf("RISPOSTA SELEZIONATA NON VALIDA... NESSUN PUNTO GUADAGNATO\n");}
+        else{
+            printf("CORRETTO !!!");
+            punteggio1 = punteggio1 + 1;}
+            
+        //BLOCCO DOMANDA 2
+        printf("\nDomanda 2: PER COSA SI UTILIZZA UNA MACCHINA VIRTUALE? \n 1)EMULAZIONE DI UNA PIATTAFORMA\n 2)ATTACCO INFORMATICO\n 3)CONNESSIONE AD INTERNET\n");
+        scanf("%d", &risposta1);
+        if(risposta1 !=1){
+            printf("hai sbagliato\n");}
+        if(risposta1 > 3){
+            printf("RISPOSTA SELEZIONATA NON VALIDA... NESSUN PUNTO GUADAGNATO\n");}
+        else{
+            printf("CORRETTO !!!");
+            punteggio1 = punteggio1 + 1;}
+            //BLOCCO DOMANDA 3       
+       
+        printf("\nDomanda 3: quanto fa 2+2?\n1)16 \n2)4\n3)609\n");
+        scanf("%d", &risposta1);
+        if(risposta1 !=2){
+            printf("hai sbagliato\n");}
+        if(risposta1 > 3){
+            printf("RISPOSTA SELEZIONATA NON VALIDA... NESSUN PUNTO GUADAGNATO\n");}
+        else{
+            printf("CORRETTO !!!");
+            punteggio1 = punteggio1 + 1;}
+            
+            //TERMINE DEL MINIGIOCO
+        printf("\nQuesto minigioco e' terminato ... hai totalizzato %d punti\n", punteggio1);
+        punteggio1 = 0; //RESET COUNTER PUNTEGGIO
+        //BLOCCO RICOMINCIA PARTITA
+        printf("\nSI DESIDERA RIGIOCARE? PREMERE 1 PER RIGIOCARE\n");
+        scanf("%d", &Rigioca1);
+    } 
+}while(Rigioca1 == 1);
+
+return 0;
+} 

@@ -1,0 +1,123 @@
+#include <stdlib.h> //AGGIUNTA DI STDLIB PER LA FUNZIONE EXIT
+#include <stdio.h>
+#include <string.h> //AGGIUNTA DI STRING.H PER IL CONTROLLO DELLA STRINGA
+void menu ();
+void moltiplica (float, float, float); //AGGIUNTA DEI PARAMETRI NOMINALI
+void dividi (int,int,float,int);//AGGIUNTA DEI PARAMETRI NOMINALI
+void ins_string(char[]);//AGGIUNTA PARAMETRO NOMINALE
+
+
+int main () 
+
+{
+    int valore_sentinella; //AGGIUNTA DI UN VALORE SENTINELLA PER IL CONTROLLO DELL'INPUT E PER LA CORRETTA ITERAZIONE.
+	char scelta = {'\0'};
+	//VARIABILI LOCALI PER LA FUNZIONE MOLTIPLICA
+	float MOLa,MOLb,RISmol;
+    //VARIABILI LOCALI PER LA FUNZIONE DIVIDI
+    int DIVa,DIVb,Resto_div;
+    float RISdiv;
+    //VARIABILI LOCALI PER LA FUNZIONE ins_string
+    char str[10] = {'\0'};
+	
+	//VARIABILI PER ITERAZIONE FINALE DEL PROGRAMMA
+	int scelta_finale, valore_sentinella2;
+	
+do{	
+	menu ();
+	
+	// MODELLO DI ITERAZIONE PER RIAVVIO APPLICAZIONE
+    
+	do{   //MODELLO DI ITERAZIONE PER INPUT ERRATO
+	valore_sentinella = 0;
+	scelta_finale = 0;
+    valore_sentinella2 = 0;
+	
+	scanf ("%c", &scelta); //Non può essere preso in INPUT un valore decimale su una variabile di tipo char, modifica con %c
+
+	switch (scelta)
+	{
+		case 'A':
+		case 'a':// <---- Manca la scelta della lettera minuscola, aggiungerla per evitare problemi
+		moltiplica(MOLa,MOLb,RISmol);
+		break;
+		case 'B':
+		case 'b':
+                dividi(DIVa,DIVb,RISdiv,Resto_div);//Inserimento dei parametri LOCALI inerenti alla funzione.
+                break;
+		case 'C':
+		case 'c':
+                ins_string(str);
+                break;
+        //STRUTTURA DI CONTROLLO PER INPUT ERRATO CON VALORE SENTINELLA.
+        default: 
+        valore_sentinella = 1;
+        break;
+        //FINE STRUTTURA DI CONTROLLO PER INPUT ERRATO.
+	}
+}while(valore_sentinella == 1); //CHIUSURA DEL MODELLO DI ITERAZIONE
+    printf("\nHAI BISOGNO DI FARE ALTRE OPERAZIONI? .. \nPREMI 1 PER RIAVVIARE IL PROGRAMMA, ALTRO PER USCIRE\n");
+    scanf("\n%d", &scelta_finale);
+    if(scelta_finale == 1){
+        valore_sentinella2 = 1;
+    }
+    else{
+    exit;    
+   }
+
+}while(valore_sentinella2 == 1);
+return 0;
+
+}
+
+
+void menu ()
+{
+	printf ("Benvenuto, sono un assitente digitale, posso aiutarti a sbrigare alcuni compiti\n");
+	printf ("Come posso aiutarti?\n");
+	printf ("A >> Moltiplicare due numeri\nB >> Dividere due numeri\nC >> Inserire una stringa\n");
+
+}
+
+
+void moltiplica (float a, float b, float prodotto) // AGGIUNTA DELLE VARIABILI E CAMBIO DI TIPO ALLA FUNZIONE
+{
+	a,b = 0;
+	printf ("Inserisci i due numeri da moltiplicare:\n");
+	scanf ("\n%f", &a);
+	scanf ("\n%f", &b);
+
+	prodotto = a * b;
+
+	printf ("Il prodotto tra %.2f e %.2f e': %.2f", a,b,prodotto);
+}
+
+
+void dividi (int a, int b, float divisione, int modulo) // AGGIUNTA DELLE VARIABILI E CAMBIO DI TIPO ALLA FUNZIONE
+{
+        a,b = 0;
+        printf ("Inserisci il numeratore:");
+        scanf ("\n%d", &a);
+	printf ("Inserisci il denumeratore:");
+        scanf ("\n%d", &b);
+        divisione = a / b;
+        modulo = a % b;
+        printf("\nLa divisione tra %d e %d e' : %.2f", a,b, divisione);
+        printf ("\nIl resto della divisione tra %d e %d e': %d", a,b,modulo); //CAMBIO DELLA FUNZIONE DA DIVISIONE A RESTO (SCOPO DEL MODULO)
+}
+
+
+
+
+
+void ins_string (char stringa[]) // AGGIUNTA DELLE VARIABILI E CAMBIO DI TIPO ALLA FUNZIONE 
+{
+	    do{
+        printf ("Inserisci la stringa\n:");
+        scanf ("\n%s", stringa);
+        if(strlen(stringa)> 10){
+            printf("\nINSERIRE UNA STRINGA DI MASSIMO 10 CARATTERI");
+        }
+	    }while(strlen(stringa) > 10);
+        printf("\nLA STRINGA INSERITA E' : %s", stringa);
+}

@@ -1,0 +1,63 @@
+import math
+print("QUESTO PROGRAMMA CALCOLA IL PERIMETRO DI UN QUADRATO, LA CIRCONFERENZA DI UN CERCHIO E IL PERIMETRO DI UN RETTANGOLO...\n")
+print
+print("CIAO")
+print
+nome = (input("COME TI CHIAMI?"))
+print
+print("BENVENUTO ", nome)
+
+
+#DEF FUNZIONE PERIMETRO QUADRATO
+def quadrato(lato):
+    perimetro = int(lato)*4
+    return perimetro
+
+#DEF FUNZIONE AREA CERCHIO
+def cerchio(diametro):
+    raggio = int(diametro) / 2
+    circonferenza = (2 * math.pi * raggio)
+    return circonferenza
+#DEF FUNZIONE PERIMETRO RETTANGOLO
+def rettangolo(base,altezza):
+    base_pow = int(base)**2
+    altezza_pow = int(altezza)**2
+    perimetro = base_pow + altezza_pow
+    return perimetro
+#DEFINIZIONE SCELTA UTENTE
+print("SCEGLIERE SU QUALE FIGURA SI DESIDERA OPERARE ...")
+print
+print(" -a >> QUADRATO")
+print
+print(" -b >> CERCHIO")
+print
+print(" -c >> RETTANGOLO")
+print
+print(" -z PER USCIRE")
+print
+scelta_utente = (input("INSERIRE OPZIONE RICHIESTA\n"))
+
+while scelta_utente != 'z':
+    if scelta_utente == "a":
+        lato = (input("Inserire misura lato : \n"))
+        print ("\n Il perimetro misura : ", quadrato(lato))
+        scelta_utente = (input("SVOLGIAMO ALTRI CALCOLI?\n"))
+    
+    elif scelta_utente == "b":
+        diametro = (input("INSERIRE IL DIAMETRO DEL CERCHIO .. \n"))
+        print("LA CIRCONFERENZA DEL TUO CERCHIO E':\n",cerchio(diametro))
+        scelta_utente =(input("SVOLGIAMO ALTRI CALCOLI?:\n"))
+
+    elif scelta_utente == "c":
+        altezza =(input("INSERIRE ALTEZZA DEL RETTANGOLO:\n"))
+        print
+        base = (input("INSERIRE BASE DEL RETTANGOLO\n"))
+        print
+        print("IL PERIMETRO DEL RETTANGOLO E':\n",rettangolo(base,altezza))
+        scelta_utente = (input("SVOLGIAMO ALTRI CALCOLI?:\n"))
+        
+
+    else:
+        print("MI DISPIACE MA NON HO TROVATO NESSUNA OPZIONE:\n")
+        print
+        scelta_utente = (input("INSERIRE OPZIONE RICHIESTA\n"))
